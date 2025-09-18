@@ -18,6 +18,9 @@ class AppServiceProvider extends ServiceProvider
         $this->app->when([HomeController::class, ReportController::class])
             ->needs(ReportServiceInterface::class)
             ->give(ReportService::class);
+
+//        or / // Just use simple binding if it's the same implementation
+//$this->app->bind(UserServiceInterface::class, UserService::class);
     }
 
     /**
