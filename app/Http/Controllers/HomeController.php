@@ -29,6 +29,8 @@ class HomeController extends Controller
 //        $userInfo=User::with('comments')->get();
 //        return $userInfo;
 
+        dd("CSD");
+
         $posts = User::with([
             'comments' => fn ($comments) => $comments->chaperone(),
         ])->get();
