@@ -58,4 +58,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Comment::class);
     }
+
+    public function image() {     // one profile image
+        return $this->morphOne(Image::class, 'imageable');
+    }
+    public function roles() {
+        return $this->belongsToMany(Role::class)->withPivot('assigned_at')->withTimestamps();
+    }
 }
