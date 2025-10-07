@@ -28,3 +28,13 @@ Route::get('/',[HomeController::class,'index'])->name('home');
 //        'assigned_at' => $r->pivot->assigned_at,
 //    ]);
 //});
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
